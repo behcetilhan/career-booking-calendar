@@ -3,7 +3,10 @@
   display: flex;
   height: $b-toolbar-height;
   justify-content: space-between;
-  padding-left: 70px;
+
+  @include media-breakpoint-up(lg) {
+    padding-left: 70px;
+  }
 
   &__label {
     font-size: $fs-4;

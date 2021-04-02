@@ -59,6 +59,10 @@
   max-height: 60vh;
   overflow-y: auto;
 
+  @include media-breakpoint-down(md) {
+    max-height: 80vh;
+  }
+
   .rbc-day-slot {
     background-color: $white;
   }
@@ -88,5 +92,12 @@
 .rbc-today {
   a {
     color: $royal-blue;
+  }
+}
+
+.rbc-time-gutter.rbc-time-column,
+.rbc-label.rbc-time-header-gutter {
+  @include media-breakpoint-down(md) {
+    display: none;
   }
 }
