@@ -1,0 +1,31 @@
+.b-event {
+  background-color: $titan-white;
+  border-bottom-right-radius: 0.375rem;
+  border-top-right-radius: 0.375rem;
+  box-shadow: 0.125rem 0 0 0 rgba($medium-purple, 1) inset;
+  font-size: $fs--2;
+  height: 100%;
+  padding: 0.375rem;
+  position: relative;
+
+  &__description {
+    height: 1rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100%;
+  }
+
+  &__time {
+    bottom: 0.375rem;
+    font-size: $fs--4;
+    position: absolute;
+    right: 0.375rem;
+  }
+
+  &.b-event-user {
+    background-color: $apple-green;
+    box-shadow: 0.125rem 0 0 0 rgba($goblin, 1) inset;
+    color: $goblin;
+  }
+}

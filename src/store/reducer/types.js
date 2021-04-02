@@ -1,0 +1,6 @@
+export const GET_API_DATA = 'GET_API_DATA';
+export const DATA_LOADED = 'DATA_LOADED';
+export const API_ERROR = 'API_ERROR';
+export const SET_ALLOCATED_SLOTS = 'SET_ALLOCATED_SLOTS';
+export const ADD_EVENT_GET_DETAILS = 'ADD_EVENT_GET_DETAILS';
+export const GET_EVENT_DETAIL = 'GET_EVENT_DETAIL';

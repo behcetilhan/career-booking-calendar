@@ -1,12 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import './scss/App.scss';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import AllocatedDateTimeProvider from './store/context';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <AllocatedDateTimeProvider>
+      <App />
+    </AllocatedDateTimeProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );

@@ -1,0 +1,10 @@
+.b-toolbar {
+  align-items: center;
+  display: flex;
+  height: $b-toolbar-height;
+  justify-content: space-between;
+
+  &__label {
+    font-size: $fs-4;
+  }
+}

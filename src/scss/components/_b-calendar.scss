@@ -1,0 +1,97 @@
+.rbc-time-view {
+  /* background-color: $white; */
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+}
+
+.rbc-time-header-content {
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+  overflow: hidden;
+
+  .rbc-header {
+    align-items: center;
+    background-color: $athens-gray;
+    border-bottom: none;
+    display: flex;
+    justify-content: center;
+    min-height: $header-day-label-height;
+
+    a {
+      color: $raven;
+      user-select: none;
+    }
+
+    &.rbc-today {
+      a {
+        color: $royal-blue;
+      }
+    }
+  }
+}
+
+.rbc-timeslot-group {
+  min-height: 3.75rem;
+}
+
+.rbc-day-slot {
+  .rbc-events-container {
+    cursor: pointer;
+    margin-right: 0;
+  }
+
+  .rbc-event {
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    color: $daisy-bush;
+    padding: 0.25rem;
+  }
+}
+
+.rbc-event-label,
+.rbc-allday-cell {
+  display: none;
+}
+
+.rbc-time-content {
+  border-top-width: 0.0625rem;
+  max-height: calc(
+    100vh -
+      (
+        #{$header-day-label-height} + #{$b-toolbar-height} + #{$footer-gap-height}
+      )
+  );
+  overflow-y: auto;
+
+  .rbc-day-slot {
+    background-color: $white;
+  }
+
+  > .rbc-time-column {
+    &:nth-child(2) {
+      border-bottom-left-radius: 1rem;
+    }
+
+    &:last-child {
+      border-bottom-right-radius: 1rem;
+    }
+  }
+}
+
+.rbc-time-slot {
+  align-items: flex-start;
+  color: $aluminium;
+  display: flex;
+  font-size: $fs--2;
+  justify-content: flex-start;
+  padding-right: 0.3125rem;
+  padding-top: 0.3125rem;
+  user-select: none;
+}
+
+.rbc-today {
+  a {
+    color: $royal-blue;
+  }
+}

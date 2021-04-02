@@ -1,0 +1,16 @@
+.b-modal-dialog {
+  z-index: 1041;
+}
+.b-modal-allocated {
+  padding: 0.5rem;
+
+  &__close {
+    position: absolute;
+    right: 0;
+    top: 0;
+
+    img {
+      width: 0.7rem;
+    }
+  }
+}

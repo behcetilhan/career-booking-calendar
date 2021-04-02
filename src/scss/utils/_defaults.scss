@@ -1,0 +1,30 @@
+$font-family-base: 'Noto Sans', sans-serif !default;
+
+$font-size-base: 0.875rem !default;
+$fs--4: $font-size-base - 0.25rem !default;
+$fs--2: $font-size-base - 0.125rem !default;
+$fs-4: $font-size-base + 0.25rem !default;
+$fs-8: $font-size-base + 0.5rem !default;
+
+$titan-white: #eeeaff;
+$royal-blue: #445af7;
+$whisper: #f5f6fa;
+$athens-gray: #fbfbfc;
+$mine-shaft: #323232;
+$daisy-bush: #4b2ca8;
+$medium-purple: #7858d7;
+$apple-green: #e0f3e7;
+$goblin: #3e8f58;
+$aluminium: #abb1bb;
+$raven: #707a88;
+
+$success: $goblin !default;
+$body-bg: $whisper !default;
+
+$b-toolbar-height: 3.75rem !default;
+$header-day-label-height: 3rem !default;
+$footer-gap-height: 1.25rem !default;
+
+$current-time-color: $royal-blue !default;
+$cell-border: $whisper !default;
+$calendar-border: $whisper !default;
