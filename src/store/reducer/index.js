@@ -5,7 +5,6 @@ const {
   DATA_LOADED,
   API_ERROR,
   SET_ALLOCATED_SLOTS,
-  TOGGLE_MODAL,
   ADD_EVENT_GET_DETAILS,
   GET_EVENT_DETAIL,
 } = Types;
@@ -31,11 +30,6 @@ export const reducer = (state, action) => {
       return {
         ...state,
         allocatedTimeSlots: action.payload,
-      };
-    case TOGGLE_MODAL:
-      return {
-        ...state,
-        modalState: action.payload,
       };
     case ADD_EVENT_GET_DETAILS:
       return {
