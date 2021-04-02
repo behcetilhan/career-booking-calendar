@@ -122,6 +122,7 @@ const CareerCalendar = () => {
               endAccessor="end"
               onSelectEvent={(event) => handleAllocatedEvent(event)}
               onSelectSlot={handleSelect}
+              onSelecting = {slot => false}
               components={{
                 event: EventComponent,
                 toolbar: CalendarToolbar,
