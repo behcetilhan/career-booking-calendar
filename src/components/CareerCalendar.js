@@ -63,7 +63,6 @@ const CareerCalendar = () => {
     const allocatedTimeSlots = [];
 
     if (checkStorage(TIME_SLOTS)) {
-      console.log('aaa');
       getStorage(TIME_SLOTS).map((timeEntries) => {
         allocatedTimeSlots.push({
           ...timeEntries,
@@ -72,7 +71,6 @@ const CareerCalendar = () => {
         });
       });
     } else {
-      console.log('bbb');
       if (returnedData && returnedData.calendar) {
         returnedData.calendar.map((date) => {
           const allocatedItem = {};
@@ -107,7 +105,7 @@ const CareerCalendar = () => {
   };
 
   return (
-    <div>
+    <div className="l-page">
       <div className="container">
         {isLoading && <Loading />}
         <div className="row">
@@ -129,10 +127,6 @@ const CareerCalendar = () => {
                 toolbar: CalendarToolbar,
               }}
             />
-          </div>
-        </div>
-        <div className="row">
-          <div className="col-12">
             {selectedSlot && <RegisterModal />}
             {allocatedEventData && <AllocatedEvent />}
             {apiErrorMessage && <h3>{apiErrorMessage}</h3>}

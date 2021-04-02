@@ -1,11 +1,7 @@
 import CareerCalendar from './components/CareerCalendar';
 
 function App() {
-  return (
-    <>
-      <CareerCalendar />
-    </>
-  );
+  return <CareerCalendar />;
 }
 
 export default App;

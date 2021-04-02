@@ -56,12 +56,7 @@
 
 .rbc-time-content {
   border-top-width: 0.0625rem;
-  max-height: calc(
-    100vh -
-      (
-        #{$header-day-label-height} + #{$b-toolbar-height} + #{$footer-gap-height}
-      )
-  );
+  max-height: 60vh;
   overflow-y: auto;
 
   .rbc-day-slot {
