@@ -10,6 +10,10 @@
 
   &__label {
     font-size: $fs-4;
+
+    @include media-breakpoint-down(md) {
+      font-size: $fs--2;
+    }
   }
 
   &__info {
@@ -22,6 +26,10 @@
     display: flex;
     justify-content: center;
     margin-right: 1rem;
+
+    @include media-breakpoint-down(md) {
+      margin-right: 0.5rem;
+    }
   }
 
   &__navigation-btn {
@@ -65,9 +73,14 @@
     background-size: cover;
     border: 0.1875rem solid $white;
     border-radius: 50%;
+    flex-shrink: 0;
     height: 3rem;
     margin-right: 0.3125rem;
     width: 3rem;
+
+    @include media-breakpoint-down(md) {
+      display: none;
+    }
   }
 
   &__instructor-info {
