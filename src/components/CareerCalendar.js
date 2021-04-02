@@ -91,9 +91,12 @@ const CareerCalendar = () => {
   };
 
   const handleSelect = ({ start }) => {
+    const data = !moment(start).isBefore(moment().format())
+      ? start
+      : 'past-date';
     dispatch({
       type: ADD_EVENT_GET_DETAILS,
-      payload: start,
+      payload: data,
     });
   };
 
@@ -103,6 +106,13 @@ const CareerCalendar = () => {
       payload: event,
     });
   };
+
+  /*  const DateCell = ({ range, value, children }) => {
+    const now = new Date();
+    now.setHours(0, 0, 0, 0);
+
+    return <div className={value < now ? 'date-in-past' : ''}>{children}</div>;
+  }; */
 
   return (
     <div className="l-page">
@@ -122,10 +132,11 @@ const CareerCalendar = () => {
               endAccessor="end"
               onSelectEvent={(event) => handleAllocatedEvent(event)}
               onSelectSlot={handleSelect}
-              onSelecting = {slot => false}
+              onSelecting={(slot) => false}
               components={{
                 event: EventComponent,
                 toolbar: CalendarToolbar,
+                /* timeSlotWrapper: DateCell, */
               }}
             />
             {selectedSlot && <RegisterModal />}

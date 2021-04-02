@@ -42,44 +42,56 @@ const RegisterModal = () => {
 
   return (
     <>
-      <div className={`modal fade ${selectedSlot ? 'show d-block' : ''}`}>
+      <div className="modal fade show d-block">
         <div className="modal-dialog modal-dialog-centered b-modal-dialog">
-          <div className="modal-content">
-            <div className="modal-header">
-              <h5 className="modal-title">
-                <span className="pr-1">Book a call for</span>
-                <span>{moment(selectedSlot).format('LLL')}</span>
-              </h5>
+          {selectedSlot !== 'past-date' ? (
+            <div className="modal-content">
+              <div className="modal-header">
+                <h5 className="modal-title">
+                  <span className="pr-1">Book a call for</span>
+                  <span>{moment(selectedSlot).format('LLL')}</span>
+                </h5>
+              </div>
+              <form onSubmit={handleSetEvent}>
+                <div className="modal-body">
+                  <input
+                    autoFocus
+                    type="text"
+                    value={inputValue}
+                    className="form-control"
+                    onChange={(e) => setInputValue(e.target.value)}
+                    placeholder="Reason For the Call"
+                  />
+                </div>
+                <div className="modal-footer">
+                  <button
+                    type="button"
+                    className="btn btn-secondary"
+                    onClick={() => handleModalToggle()}
+                  >
+                    Close
+                  </button>
+                  <button type="submit" className="btn btn-success">
+                    Confirm
+                  </button>
+                </div>
+              </form>
             </div>
-            <form onSubmit={handleSetEvent}>
-              <div className="modal-body">
-                <input
-                  autoFocus
-                  type="text"
-                  value={inputValue}
-                  className="form-control"
-                  onChange={(e) => setInputValue(e.target.value)}
-                  placeholder="Reason For the Call"
-                />
+          ) : (
+            <div className="modal-content">
+              <div className="modal-header">
+                <h5 className="modal-title">
+                  <span className="pr-1">Book a call for</span>
+                  <span>Past Date</span>
+                </h5>
               </div>
-              <div className="modal-footer">
-                <button
-                  type="button"
-                  className="btn btn-secondary"
-                  onClick={() => handleModalToggle()}
-                >
-                  Close
-                </button>
-                <button type="submit" className="btn btn-success">
-                  Confirm
-                </button>
-              </div>
-            </form>
-          </div>
+              adasds
+            </div>
+          )}
         </div>
         <div
           onClick={() => handleModalToggle()}
-          className={`modal-backdrop fade ${selectedSlot ? 'show' : ''}`}
+          className="modal-backdrop fade show"
         ></div>
       </div>
     </>
