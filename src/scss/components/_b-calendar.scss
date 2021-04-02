@@ -1,5 +1,4 @@
 .rbc-time-view {
-  /* background-color: $white; */
   border-top-left-radius: 1rem;
   border-top-right-radius: 1rem;
 }
@@ -20,6 +19,10 @@
     a {
       color: $raven;
       user-select: none;
+
+      @include media-breakpoint-down(md) {
+        font-size: $fs--4;
+      }
     }
 
     &.rbc-today {
