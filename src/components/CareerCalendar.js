@@ -107,13 +107,6 @@ const CareerCalendar = () => {
     });
   };
 
-  /*  const DateCell = ({ range, value, children }) => {
-    const now = new Date();
-    now.setHours(0, 0, 0, 0);
-
-    return <div className={value < now ? 'date-in-past' : ''}>{children}</div>;
-  }; */
-
   return (
     <div className="l-page">
       <div className="container">
@@ -136,7 +129,6 @@ const CareerCalendar = () => {
               components={{
                 event: EventComponent,
                 toolbar: CalendarToolbar,
-                /* timeSlotWrapper: DateCell, */
               }}
             />
             {selectedSlot && <RegisterModal />}

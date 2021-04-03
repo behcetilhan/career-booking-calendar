@@ -1,70 +1,142 @@
-# Getting Started with Create React App
+# Career Booking Calendar
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![Vercel](http://therealsujitk-vercel-badge.vercel.app/?app=career-booking-calendar)
+### [DEMO](https://career-booking-calendar-behcetilhan.vercel.app/)
+Career Booking Calendar gives students the ability to schedule calls with thier mentors.
 
-## Available Scripts
+## Features
+
+- List of already allocated time slots with time and description
+- Week based UI
+- Ability to add description to planned call. 
+- Past date detection
+- Current time indicator
+- UTC Compatible dates & times
+- Custom event types for already allocated and user allocated events
+- Ability to see details of past calls.
+
+---
+## Tech
+
+Carer Booking Calendar is bootstrapped with [Create React App](https://github.com/facebook/create-react-app) and uses open source projects listed below to work properly:
+
+- [React Big Calendar](https://github.com/jquense/react-big-calendar) - An events calendar component built for React and made for modern browsers (read: IE10+) and uses flexbox over the classic tables-ception approach.
+- [Moment.js](https://momentjs.com/) - A JavaScript date library for parsing, validating, manipulating, and formatting dates.
+- [Axios](https://github.com/axios/axios) - Promise based HTTP client for the browser and node.js
+- [Bootstrap SCSS](https://www.npmjs.com/package/bootstrap-scss) - Sleek, intuitive, and powerful front-end framework for faster and easier web development.
+
+---
+## Installation & Available Scripts
+
+Carer Booking Calendar requires [Node.js](https://nodejs.org/) v10+ to run.
+
+Cloning project and installing dependencies
+
+```sh
+git clone https://github.com/behcetilhan/career-booking-calendar.git
+cd career-booking-calendar
+yarn install
+```
 
 In the project directory, you can run:
 
-### `yarn start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
+##### `yarn start`
+Runs the app in the development mode. The page will reload if you make edits.
 You will also see any lint errors in the console.
 
-### `yarn test`
+##### `yarn test`
+Launches the test runner in the interactive watch mode. 
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+##### `yarn build`
+Builds the app for production to the `build` folder. It correctly bundles React in production mode and optimizes the build for the best performance.
+The build is minified and the filenames include the hashes.
 
-### `yarn build`
+## App Flow & Code Examples
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+App uses axios to fetch data from [CareerFoundry API](https://cfcalendar.docs.apiary.io/). Then it passes the returned data to localstorage and app context for future user additions.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+App is initializes with an itial state created and distributed by the Context
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```sh
+export const initialState = {
+  returnedData: '',
+  isLoading: true,
+  apiErrorMessage: '',
+  allocatedTimeSlots: [],
+  selectedSlot: '',
+  allocatedEventData: false
+};
 
-### `yarn eject`
+export const DataContext = createContext();
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+const AllocatedDateTimeProvider = (props) => {
+  const [state, dispatch] = useReducer(reducer, initialState);
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+  return (
+    <DataContext.Provider value={{ state, dispatch }}>
+      {props.children}
+    </DataContext.Provider>
+  );
+};
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+`useFetch` is a custom hook which is used to call the data. And needs api, method and url to function 
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+```sh
+useEffect(() => {
+    const fetchData = async () => {
+      api[method](url, JSON.parse(config), JSON.parse(data))
+        .then((res) => {
+          dispatch({
+            type: GET_API_DATA,
+            payload: res.data,
+          });
+        })
+        .catch((err) => {
+          dispatch({
+            type: API_ERROR,
+            payload: 'An error'
+          });
+        })
+        .finally(() => {
+          dispatch({
+            type: DATA_LOADED,
+          });
+        });
+    };
+```
 
-## Learn More
+These params are given in the main component of the app `CareerCalendar`
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```sh
+const CareerCalendar = () => {
+  useFetch({
+    api: cfCalendarApi,
+    method: 'get',
+    url: '/mentors/1/agenda',
+  });
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
+Also react-big-calendar component is configured here
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```sh
+<Calendar
+  selectable
+  localizer={localizer}
+  views={['week']}
+  defaultView="week"
+  events={allocatedTimeSlots}
+  startAccessor="start"
+  step={60}
+  timeslots={1}
+  endAccessor="end"
+  onSelectEvent={(event) => handleAllocatedEvent(event)}
+  onSelectSlot={handleSelect}
+  onSelecting={(slot) => false}
+  components={{
+    event: EventComponent,
+    toolbar: CalendarToolbar,
+  }}
+/>
+```
