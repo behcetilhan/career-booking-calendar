@@ -141,6 +141,6 @@ Also react-big-calendar component is configured here
 />
 ```
 
-## ToDO's
+## ToDo's
 
 - Unit testing
